@@ -1,0 +1,332 @@
+================================================================================
+                    NIFTY50 EMA9/EMA21 - API KEY SETUP GUIDE
+================================================================================
+
+FILE: nifty50_ema9_ema21_itm3_openalgo.py
+STATUS: ✅ PROPERLY CONFIGURED FOR API KEY FROM ENVIRONMENT
+
+================================================================================
+CURRENT CONFIGURATION
+================================================================================
+
+The script is ALREADY properly configured to fetch API key from environment:
+
+Line 82:
+  API_KEY = os.getenv("OPENALGO_API_KEY", "").strip()
+
+Line 163-168:
+  if not API_KEY:
+      raise RuntimeError(
+          "OPENALGO_API_KEY is not set. Do not hard-code API keys in the script."
+      )
+
+This means:
+  ✅ API key is fetched from environment variable
+  ✅ No hardcoded credentials in the script
+  ✅ Script will error if API key is not set
+  ✅ Secure approach - API key never stored in code
+
+================================================================================
+HOW TO SET API KEY PROPERLY
+================================================================================
+
+OPTION 1: SET ENVIRONMENT VARIABLE (RECOMMENDED)
+
+  Windows Command Prompt:
+    set OPENALGO_API_KEY=your-actual-api-key
+    python nifty50_ema9_ema21_itm3_openalgo.py
+
+  Windows PowerShell:
+    $env:OPENALGO_API_KEY="your-actual-api-key"
+    python nifty50_ema9_ema21_itm3_openalgo.py
+
+  Linux/Mac/WSL:
+    export OPENALGO_API_KEY="your-actual-api-key"
+    python nifty50_ema9_ema21_itm3_openalgo.py
+
+OPTION 2: USE .env FILE (RECOMMENDED FOR DEVELOPMENT)
+
+  1. Create a .env file in the same directory as the script:
+     
+     File: .env
+     Content:
+       OPENALGO_API_KEY=your-actual-api-key
+       HOST_SERVER=http://127.0.0.1:5000
+       LOTS=1
+       ALLOW_LIVE_TRADING=false
+
+  2. Install python-dotenv:
+     pip install python-dotenv
+
+  3. Add this to the script (after imports, before API_KEY line):
+     
+     from dotenv import load_dotenv
+     load_dotenv()
+
+  4. Run the script:
+     python nifty50_ema9_ema21_itm3_openalgo.py
+
+OPTION 3: MODIFY SCRIPT TO LOAD FROM .env (ALTERNATIVE)
+
+  Edit the script and add after line 73:
+  
+    from dotenv import load_dotenv
+    load_dotenv()
+
+  This will automatically load variables from .env file.
+
+================================================================================
+STEP-BY-STEP EXECUTION
+================================================================================
+
+STEP 1: GET YOUR API KEY
+
+  1. Log into OpenAlgo dashboard
+  2. Go to Settings → API Keys
+  3. Copy your API key
+  4. Keep it safe - don't share it
+
+STEP 2: SET THE API KEY
+
+  Choose one method above (Option 1, 2, or 3)
+
+STEP 3: VERIFY API KEY IS SET
+
+  Windows Command Prompt:
+    echo %OPENALGO_API_KEY%
+    (Should show your API key)
+
+  Windows PowerShell:
+    echo $env:OPENALGO_API_KEY
+    (Should show your API key)
+
+  Linux/Mac/WSL:
+    echo $OPENALGO_API_KEY
+    (Should show your API key)
+
+STEP 4: RUN THE SCRIPT
+
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+STEP 5: EXPECTED OUTPUT
+
+  If API key is set correctly:
+    [BOT] Starting NIFTY50 EMA9/EMA21 ITM3 strategy...
+    [CONFIG] API Host: http://127.0.0.1:5000
+    [CONFIG] Strategy: NIFTY50_EMA9_EMA21_ITM3
+    ...
+
+  If API key is NOT set:
+    RuntimeError: OPENALGO_API_KEY is not set. Do not hard-code API keys in the script.
+
+================================================================================
+ENVIRONMENT VARIABLES SUPPORTED
+================================================================================
+
+Required:
+  OPENALGO_API_KEY=<your-api-key>
+
+Optional:
+  HOST_SERVER=http://127.0.0.1:5000 (default)
+  LOTS=1 (default)
+  ALLOW_LIVE_TRADING=false (default - set to true for live trading)
+  MANAGE_ALL_NIFTY_MIS_POSITIONS=false (default)
+  NIFTY_EMA_STATE_FILE=<path-to-state-file> (default: .nifty_ema9_ema21_state.json)
+
+================================================================================
+COMPLETE EXAMPLE - WINDOWS COMMAND PROMPT
+================================================================================
+
+Step 1: Open Command Prompt
+
+Step 2: Navigate to script directory
+  cd D:\OpenAlgo\openalgo\strategies\examples
+
+Step 3: Set API key
+  set OPENALGO_API_KEY=your-actual-api-key
+
+Step 4: Verify API key is set
+  echo %OPENALGO_API_KEY%
+
+Step 5: Run the script
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+Step 6: Expected output
+  [BOT] Starting NIFTY50 EMA9/EMA21 ITM3 strategy...
+  [CONFIG] API Host: http://127.0.0.1:5000
+  [CONFIG] Strategy: NIFTY50_EMA9_EMA21_ITM3
+  [CONFIG] Index: NSE_INDEX:NIFTY
+  [CONFIG] EMA: 9/21
+  [CONFIG] Candle: 5m
+  [CONFIG] Entry cutoff: 15:28:00 IST
+  [CONFIG] Force close: 15:29:00 IST
+  [CONFIG] Live trading: DISABLED (use ALLOW_LIVE_TRADING=true to enable)
+  
+  [WEBSOCKET] Connecting...
+  [WEBSOCKET] Connected
+  
+  [CANDLE] 2026-09-22 15:05:00 O=23400.00 H=23450.00 L=23380.00 C=23420.00
+  [EMA] EMA9=23410.50 EMA21=23405.25
+  
+  ... (strategy running)
+
+================================================================================
+COMPLETE EXAMPLE - WINDOWS POWERSHELL
+================================================================================
+
+Step 1: Open PowerShell
+
+Step 2: Navigate to script directory
+  cd D:\OpenAlgo\openalgo\strategies\examples
+
+Step 3: Set API key
+  $env:OPENALGO_API_KEY="your-actual-api-key"
+
+Step 4: Verify API key is set
+  echo $env:OPENALGO_API_KEY
+
+Step 5: Run the script
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+Step 6: Expected output
+  (Same as above)
+
+================================================================================
+COMPLETE EXAMPLE - LINUX/MAC/WSL
+================================================================================
+
+Step 1: Open Terminal
+
+Step 2: Navigate to script directory
+  cd D:\OpenAlgo\openalgo\strategies\examples
+
+Step 3: Set API key
+  export OPENALGO_API_KEY="your-actual-api-key"
+
+Step 4: Verify API key is set
+  echo $OPENALGO_API_KEY
+
+Step 5: Run the script
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+Step 6: Expected output
+  (Same as above)
+
+================================================================================
+USING .env FILE (RECOMMENDED)
+================================================================================
+
+Step 1: Create .env file
+
+  Create file: D:\OpenAlgo\openalgo\strategies\examples\.env
+  
+  Content:
+    OPENALGO_API_KEY=your-actual-api-key
+    HOST_SERVER=http://127.0.0.1:5000
+    LOTS=1
+    ALLOW_LIVE_TRADING=false
+    MANAGE_ALL_NIFTY_MIS_POSITIONS=false
+
+Step 2: Install python-dotenv
+
+  pip install python-dotenv
+
+Step 3: Modify the script
+
+  Add this line after line 73 (after imports):
+  
+    from dotenv import load_dotenv
+    load_dotenv()
+
+Step 4: Run the script
+
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+Step 5: Expected output
+
+  [BOT] Starting NIFTY50 EMA9/EMA21 ITM3 strategy...
+  (API key loaded from .env file)
+
+================================================================================
+SECURITY BEST PRACTICES
+================================================================================
+
+DO:
+  ✅ Use environment variables for API keys
+  ✅ Use .env file for development
+  ✅ Never commit .env file to git
+  ✅ Never share your API key
+  ✅ Rotate API keys regularly
+  ✅ Use different API keys for different environments
+
+DON'T:
+  ❌ Hardcode API key in the script
+  ❌ Commit API key to version control
+  ❌ Share API key via email or chat
+  ❌ Use the same API key for multiple environments
+  ❌ Store API key in plain text files
+  ❌ Print API key in logs
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+ERROR: RuntimeError: OPENALGO_API_KEY is not set
+SOLUTION:
+  1. Check if API key is set: echo $OPENALGO_API_KEY
+  2. If empty, set it: export OPENALGO_API_KEY="your-api-key"
+  3. Run the script again
+
+ERROR: Connection refused to http://127.0.0.1:5000
+SOLUTION:
+  1. Verify OpenAlgo server is running
+  2. Check HOST_SERVER environment variable
+  3. Verify port 5000 is accessible
+
+ERROR: Invalid API key
+SOLUTION:
+  1. Verify API key is correct
+  2. Check for extra spaces: echo $OPENALGO_API_KEY
+  3. Copy API key again from OpenAlgo dashboard
+  4. Set it again: export OPENALGO_API_KEY="new-api-key"
+
+ERROR: Permission denied
+SOLUTION:
+  1. Check file permissions
+  2. Run with proper permissions
+  3. Check if script is executable
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+Before running the script:
+
+[OK] API key is obtained from OpenAlgo dashboard
+[OK] API key is set in environment variable
+[OK] API key is verified (echo $OPENALGO_API_KEY)
+[OK] OpenAlgo server is running
+[OK] Broker is connected
+[OK] Script is in correct directory
+[OK] Python 3.7+ is installed
+[OK] Required packages are installed (openalgo, pandas)
+
+Run the script:
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+Expected result:
+  [BOT] Starting NIFTY50 EMA9/EMA21 ITM3 strategy...
+  [WEBSOCKET] Connected
+  [CANDLE] Candles being received
+  [EMA] EMA values calculated
+
+================================================================================
+STATUS: ✅ SCRIPT PROPERLY CONFIGURED
+================================================================================
+
+The script is already properly configured to fetch API key from environment.
+No modifications needed - just set the API key and run.
+
+Run: python nifty50_ema9_ema21_itm3_openalgo.py
+
+================================================================================

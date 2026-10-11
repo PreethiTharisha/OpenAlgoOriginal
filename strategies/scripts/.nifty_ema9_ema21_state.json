@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "updated_at": "2026-09-25T12:26:38.670542+05:30",
+  "positions": [
+    {
+      "symbol": "NIFTY29SEP2623200PE",
+      "exchange": "NFO",
+      "option_type": "PE",
+      "quantity": 130,
+      "entry_price": 157.43,
+      "stop_price": 141.687,
+      "target_price": 204.65900000000002,
+      "entry_time": "2026-09-25T12:04:03.185067+05:30",
+      "expiry": "29SEP26",
+      "quote_failures": 0
+    }
+  ],
+  "last_traded_regime": null
+}

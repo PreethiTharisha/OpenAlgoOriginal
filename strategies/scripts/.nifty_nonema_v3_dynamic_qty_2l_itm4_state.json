@@ -1,0 +1,10 @@
+{
+  "daily_day": "2026-10-01",
+  "daily_trades": 0,
+  "last_exit_direction": null,
+  "last_exit_time": null,
+  "last_exit_reason": "",
+  "last_exit_underlying": 0.0,
+  "reentry_reset_seen": true,
+  "positions": {}
+}

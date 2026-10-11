@@ -1,0 +1,204 @@
+================================================================================
+                    INVALID API KEY - QUICK FIX
+================================================================================
+
+ERROR YOU'RE GETTING:
+  HTTP 403: {"message":"Invalid openalgo apikey","status":"error"}
+
+PROBLEM:
+  API key in .env is PLACEHOLDER, not valid for trading
+
+CURRENT KEY IN .env:
+  APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+  ❌ This is auto-generated on first run - NOT valid for API calls
+
+================================================================================
+                    7-STEP FIX (5 MINUTES)
+================================================================================
+
+STEP 1: Open OpenAlgo
+  URL: http://127.0.0.1:5000
+  Should load dashboard or login page
+
+STEP 2: Log In
+  Username: Your broker username (NOT OpenAlgo username)
+  Password: Your broker password
+  Click: Login
+  Wait: Dashboard loads with broker name
+
+STEP 3: Go to API Key Page
+  Click: Settings (top-right menu)
+  Click: API Key
+  OR: Go directly to http://127.0.0.1:5000/apikey
+
+STEP 4: Copy Your API Key
+  You'll see a 64-character key like:
+  0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+  
+  Copy the ENTIRE key (all 64 characters)
+
+STEP 5: Update .env File
+  Open: D:\OpenAlgo\openalgo\.env
+  
+  Find this line:
+  APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+  
+  Replace with your new key:
+  APP_KEY = '0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165'
+
+STEP 6: Save .env File
+  Press: Ctrl+S
+  Verify: File is saved
+
+STEP 7: Run Your Script
+  Command: python strategies/examples/sandboxtest_fixed.py
+  
+  Should see:
+  [OK] Client initialized successfully
+  [OK] Funds retrieved
+  [OK] Quote retrieved
+  [OK] BUY order placed
+  [OK] SELL order placed
+  [OK] Sandbox Test Completed
+
+================================================================================
+                    KEY REQUIREMENTS
+================================================================================
+
+Your API key MUST be:
+  ✅ Exactly 64 characters
+  ✅ Hexadecimal (0-9, a-f)
+  ✅ No spaces or special characters
+  ✅ No quotes inside (only around it in .env)
+
+Example of CORRECT format in .env:
+  APP_KEY = '0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165'
+
+Example of WRONG format:
+  APP_KEY = '0aac0bae 37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165'  ❌ (space)
+  APP_KEY = '0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a16'   ❌ (63 chars)
+  APP_KEY = '0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a1655' ❌ (65 chars)
+
+================================================================================
+                    VERIFICATION
+================================================================================
+
+Check API key length:
+  Windows PowerShell:
+    (Get-Content D:\OpenAlgo\openalgo\.env | Select-String "APP_KEY").Line.Length
+    Should be around 75 (includes APP_KEY = ' and ')
+
+Check OpenAlgo is running:
+  Open: http://127.0.0.1:5000
+  Should load without error
+
+Check .env file:
+  grep APP_KEY D:\OpenAlgo\openalgo\.env
+  Should show your new 64-character key
+
+================================================================================
+                    COMMON MISTAKES
+================================================================================
+
+MISTAKE 1: Copied only part of the key
+  SOLUTION: Copy the ENTIRE 64-character string
+
+MISTAKE 2: Added extra spaces
+  SOLUTION: No spaces before or after the key value
+
+MISTAKE 3: Forgot to save .env file
+  SOLUTION: Press Ctrl+S after editing
+
+MISTAKE 4: Used wrong API key (broker key instead of OpenAlgo key)
+  SOLUTION: Get key from http://127.0.0.1:5000/apikey page
+
+MISTAKE 5: Didn't log in before accessing API key page
+  SOLUTION: Log in with broker credentials first
+
+MISTAKE 6: OpenAlgo not running
+  SOLUTION: Start OpenAlgo with: python app.py
+
+================================================================================
+                    SCRIPTS AFFECTED
+================================================================================
+
+All these scripts use APP_KEY from .env:
+
+  ✅ strategies/examples/sandboxtest_fixed.py
+  ✅ strategies/examples/continuous_trading_bot.py
+  ✅ strategies/examples/continuous_trading_bot_nifty.py
+
+Once you update .env with correct API key, ALL scripts will work!
+
+================================================================================
+                    EXPECTED OUTPUT (SUCCESS)
+================================================================================
+
+After fixing API key, you should see:
+
+[OK] Client initialized successfully
+[OK] Funds retrieved: {'status': 'success', 'data': {...}}
+[OK] Quote retrieved - LTP: 980.90
+[OK] BUY order placed successfully!
+[OK] Order ID: 26091596939790
+[OK] SELL order placed successfully!
+[OK] Order ID: 26091528333781
+[OK] Order book retrieved - Total orders: 2
+[OK] Sandbox Test Completed
+
+================================================================================
+                    EXPECTED OUTPUT (FAILURE - BEFORE FIX)
+================================================================================
+
+Before fixing API key, you see:
+
+[WARNING] Funds response: {'status': 'error', 'message': 'HTTP 403: {"message":"Invalid openalgo apikey",...}
+[WARNING] Quote response: {'status': 'error', 'message': 'HTTP 403: {"message":"Invalid openalgo apikey",...}
+[ERROR] BUY order failed: HTTP 403: {"message":"Invalid openalgo apikey",...}
+[ERROR] SELL order failed: HTTP 403: {"message":"Invalid openalgo apikey",...}
+
+This means your API key needs to be updated!
+
+================================================================================
+                    IMPORTANT NOTES
+================================================================================
+
+⚠️  Two Different Keys:
+
+1. APP_KEY (in .env) - Auto-generated on startup
+   APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+   Purpose: Flask session security
+   Status: This is a PLACEHOLDER
+
+2. OpenAlgo API Key (from /apikey page) - Generated when you log in
+   0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+   Purpose: Trading API authentication
+   Status: This is what you NEED to get and use
+
+🔒  Security:
+   - Never commit .env to git
+   - Keep API key confidential
+   - Don't share .env file
+   - Regenerate if compromised
+
+================================================================================
+                    TIMELINE
+================================================================================
+
+Step 1 (Open OpenAlgo):     1 minute
+Step 2 (Log in):            1 minute
+Step 3 (Go to API Key):     1 minute
+Step 4 (Copy key):          1 minute
+Step 5 (Update .env):       1 minute
+Step 6 (Save file):         30 seconds
+Step 7 (Run script):        30 seconds
+
+TOTAL TIME: ~5 minutes
+
+================================================================================
+
+STATUS: ⚠️  API key needs to be updated
+ACTION: Follow 7 steps above
+RESULT: All scripts will work with correct API key
+
+================================================================================

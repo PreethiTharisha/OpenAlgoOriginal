@@ -1,0 +1,124 @@
+================================================================================
+                    NIFTY50 EMA9/EMA21 - QUICK RUN GUIDE
+================================================================================
+
+FILE: nifty50_ema9_ema21_itm3_openalgo.py
+STATUS: ✅ READY TO RUN
+
+================================================================================
+QUICK START (3 STEPS)
+================================================================================
+
+STEP 1: Set API Key
+
+  Windows Command Prompt:
+    set OPENALGO_API_KEY=your-actual-api-key
+
+  Windows PowerShell:
+    $env:OPENALGO_API_KEY="your-actual-api-key"
+
+  Linux/Mac/WSL:
+    export OPENALGO_API_KEY="your-actual-api-key"
+
+STEP 2: Navigate to Script
+
+  cd D:\OpenAlgo\openalgo\strategies\examples
+
+STEP 3: Run Script
+
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+================================================================================
+EXPECTED OUTPUT
+================================================================================
+
+[BOT] Starting NIFTY50 EMA9/EMA21 ITM3 strategy...
+[CONFIG] API Host: http://127.0.0.1:5000
+[CONFIG] Strategy: NIFTY50_EMA9_EMA21_ITM3
+[CONFIG] Index: NSE_INDEX:NIFTY
+[CONFIG] EMA: 9/21
+[CONFIG] Candle: 5m
+[CONFIG] Entry cutoff: 15:28:00 IST
+[CONFIG] Force close: 15:29:00 IST
+[CONFIG] Live trading: DISABLED
+
+[WEBSOCKET] Connecting...
+[WEBSOCKET] Connected
+
+[CANDLE] 2026-09-22 15:05:00 O=23400.00 H=23450.00 L=23380.00 C=23420.00
+[EMA] EMA9=23410.50 EMA21=23405.25
+
+... (strategy running)
+
+================================================================================
+CONFIGURATION
+================================================================================
+
+EMA: 9 & 21
+Candle: 5 minutes
+Confirmation: 5-10 minutes
+Target: 40% profit
+Stoploss: 10% loss
+Entry Cutoff: 3:28 PM
+Force Close: 3:29 PM
+Options: ITM3 (3 strikes away)
+Product: MIS (Intraday)
+
+================================================================================
+STRATEGY OVERVIEW
+================================================================================
+
+1. Monitor NIFTY index 5-minute candles
+2. Calculate EMA9 and EMA21
+3. Detect EMA9 crosses EMA21
+4. Wait 5-10 minutes for confirmation
+5. Check if trend continues
+6. Place CALL option on BULLISH
+7. Place PUT option on BEARISH
+8. Monitor 40% target & 10% stoploss
+9. Automatically close when targets hit
+10. Force close at 3:29 PM
+
+================================================================================
+ENVIRONMENT VARIABLES
+================================================================================
+
+Required:
+  OPENALGO_API_KEY=your-api-key
+
+Optional:
+  HOST_SERVER=http://127.0.0.1:5000
+  LOTS=1
+  ALLOW_LIVE_TRADING=false
+  MANAGE_ALL_NIFTY_MIS_POSITIONS=false
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Error: OPENALGO_API_KEY is not set
+→ Set API key: export OPENALGO_API_KEY="your-api-key"
+
+Error: Connection refused
+→ Check if OpenAlgo server is running on port 5000
+
+Error: Invalid API key
+→ Verify API key from OpenAlgo dashboard
+
+================================================================================
+SECURITY
+================================================================================
+
+✅ API key fetched from environment (not hardcoded)
+✅ No credentials stored in script
+✅ Safe for version control
+✅ Secure approach
+
+================================================================================
+STATUS: ✅ READY TO RUN
+================================================================================
+
+Set API key and run:
+  python nifty50_ema9_ema21_itm3_openalgo.py
+
+================================================================================

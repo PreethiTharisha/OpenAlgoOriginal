@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "updated_at": "2026-10-01T15:30:00.963599+05:30",
+  "positions": [],
+  "last_traded_regime": null,
+  "risk_day": "2026-10-01",
+  "daily_realized_pnl": -20036.250000000025,
+  "daily_trade_count": 13,
+  "consecutive_losses": 1,
+  "daily_block_reason": null
+}

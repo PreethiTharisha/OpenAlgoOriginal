@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "updated_at": "2026-09-25T13:53:08.221932+05:30",
+  "positions": [
+    {
+      "symbol": "NIFTY29SEP2622900CE",
+      "exchange": "NFO",
+      "option_type": "CE",
+      "quantity": 65,
+      "entry_price": 230.4,
+      "stop_price": 207.36,
+      "target_price": 299.52000000000004,
+      "entry_time": "2026-09-25T13:48:01.337655+05:30",
+      "expiry": "29SEP26",
+      "quote_failures": 0
+    }
+  ],
+  "last_traded_regime": "BULLISH"
+}

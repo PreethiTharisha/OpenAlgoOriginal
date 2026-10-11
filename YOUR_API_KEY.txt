@@ -1,0 +1,84 @@
+================================================================================
+                        YOUR API KEY INFORMATION
+================================================================================
+
+API KEY (from successful script run):
+0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+
+LENGTH: 64 characters ✓
+FORMAT: Hexadecimal ✓
+STATUS: Valid & Working ✓
+
+================================================================================
+                    HOW TO ADD TO .env FILE
+================================================================================
+
+1. Open: D:\OpenAlgo\openalgo\.env
+
+2. Add this line:
+   OPENALGO_API_KEY=0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+
+3. Save the file
+
+4. Run your script:
+   python strategies/examples/continuous_trading_bot.py
+
+================================================================================
+                    COMPLETE .env FILE TEMPLATE
+================================================================================
+
+# OpenAlgo API Configuration
+OPENALGO_API_KEY=0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+
+# Server Configuration
+HOST_SERVER=http://127.0.0.1:5000
+WEBSOCKET_URL=ws://127.0.0.1:8765
+
+# Trading Configuration
+SYMBOL=SBIN
+EXCHANGE=NSE
+STRATEGY_NAME=ContinuousTradingBot
+
+# Risk Management
+STOPLOSS_AMOUNT=5.0
+PROFIT_TARGET=10.0
+
+# Order Interval (seconds)
+INTERVAL_SECONDS=30
+
+# NIFTY Futures Configuration
+NIFTY_SYMBOL=NIFTY25JAN26FUT
+NIFTY_EXCHANGE=NFO
+NIFTY_PRODUCT=NRML
+NIFTY_QUANTITY=1
+
+================================================================================
+                    ALTERNATIVE: SET IN TERMINAL
+================================================================================
+
+If you don't want to use .env file, set environment variable before running:
+
+Windows PowerShell:
+  $env:OPENALGO_API_KEY = "0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165"
+  python strategies/examples/continuous_trading_bot.py
+
+Windows Command Prompt:
+  set OPENALGO_API_KEY=0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+  python strategies/examples/continuous_trading_bot.py
+
+Linux/Mac:
+  export OPENALGO_API_KEY="0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165"
+  python strategies/examples/continuous_trading_bot.py
+
+================================================================================
+                        SECURITY REMINDER
+================================================================================
+
+⚠️  IMPORTANT:
+- Never commit .env to git
+- Keep API key confidential
+- Don't share with others
+- Regenerate if compromised
+- Use .env for local development only
+
+================================================================================

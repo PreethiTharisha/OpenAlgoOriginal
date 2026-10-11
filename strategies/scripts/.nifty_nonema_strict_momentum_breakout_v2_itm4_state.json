@@ -1,0 +1,10 @@
+{
+  "daily_day": "2026-10-01",
+  "daily_trades": 1,
+  "last_exit_direction": "BEARISH",
+  "last_exit_time": "2026-10-01T09:23:50.399382+05:30",
+  "last_exit_reason": "PROFIT FLOOR +4.14% <= +4.31% (peak +6.31%)",
+  "last_exit_underlying": 22530.95,
+  "reentry_reset_seen": true,
+  "positions": {}
+}

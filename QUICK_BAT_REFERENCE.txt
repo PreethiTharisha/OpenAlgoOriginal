@@ -1,0 +1,161 @@
+================================================================================
+                    QUICK BAT FILE REFERENCE
+================================================================================
+
+AVAILABLE BAT FILES:
+
+1. run_NON_EMA_CROSSOVER.bat
+   Environment: .env.indmoneyNoEma
+   Purpose: Non-EMA Crossover Strategy
+   
+2. run_PYRAMID_STRATEGY.bat
+   Environment: .env.indmoneyPyramid
+   Purpose: Pyramid Strategy (NEW)
+
+================================================================================
+HOW TO RUN
+================================================================================
+
+Option 1: Double-click the bat file
+  - Navigate to D:\OpenAlgo\openalgo\
+  - Double-click run_PYRAMID_STRATEGY.bat
+  - Application starts with .env.indmoneyPyramid settings
+
+Option 2: Command Prompt
+  - Open Command Prompt
+  - cd D:\OpenAlgo\openalgo\
+  - run_PYRAMID_STRATEGY.bat
+  - Application starts
+
+Option 3: PowerShell
+  - Open PowerShell
+  - cd D:\OpenAlgo\openalgo\
+  - .\run_PYRAMID_STRATEGY.bat
+  - Application starts
+
+================================================================================
+WHAT EACH BAT FILE DOES
+================================================================================
+
+run_NON_EMA_CROSSOVER.bat:
+  1. Loads .env.indmoneyNoEma
+  2. Sets environment variables
+  3. Displays configuration
+  4. Starts OpenAlgo app.py
+
+run_PYRAMID_STRATEGY.bat:
+  1. Loads .env.indmoneyPyramid
+  2. Sets environment variables
+  3. Displays configuration
+  4. Starts OpenAlgo app.py
+
+================================================================================
+ENVIRONMENT FILES
+================================================================================
+
+.env.indmoneyNoEma
+  - Configuration for Non-EMA strategy
+  - Used by: run_NON_EMA_CROSSOVER.bat
+
+.env.indmoneyPyramid
+  - Configuration for Pyramid strategy
+  - Used by: run_PYRAMID_STRATEGY.bat
+
+.env.indmoney
+  - Default configuration
+  - Can be used as template
+
+================================================================================
+RUNNING MULTIPLE STRATEGIES
+================================================================================
+
+To run both strategies simultaneously:
+
+1. Open Command Prompt 1
+   - cd D:\OpenAlgo\openalgo\
+   - run_NON_EMA_CROSSOVER.bat
+
+2. Open Command Prompt 2
+   - cd D:\OpenAlgo\openalgo\
+   - run_PYRAMID_STRATEGY.bat
+
+Each runs independently with its own configuration!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If bat file doesn't work:
+
+1. Check .env file exists
+   - Verify .env.indmoneyPyramid exists
+   - Verify .env.indmoneyNoEma exists
+
+2. Check Python is installed
+   - Open Command Prompt
+   - Type: python --version
+   - Should show Python version
+
+3. Check you're in correct directory
+   - Should be in: D:\OpenAlgo\openalgo\
+   - Type: cd D:\OpenAlgo\openalgo\
+
+4. Check ports are available
+   - If error about port in use
+   - Check FLASK_PORT and WEBSOCKET_PORT in .env file
+   - Use different ports for different instances
+
+================================================================================
+EXPECTED OUTPUT
+================================================================================
+
+When you run run_PYRAMID_STRATEGY.bat:
+
+  Loading environment variables from .env.indmoneyPyramid...
+  
+  Starting OpenAlgo Pyramid Strategy...
+  FLASK_PORT=<value>
+  WEBSOCKET_PORT=<value>
+  DATABASE_URL=<value>
+  OPENALGO_ENV_FILE=D:\OpenAlgo\openalgo\.env.indmoneyPyramid
+  
+  [Application starts...]
+
+================================================================================
+CREATING NEW BAT FILES
+================================================================================
+
+To create a bat file for a new strategy:
+
+1. Copy run_PYRAMID_STRATEGY.bat
+2. Rename to run_[STRATEGY_NAME].bat
+3. Edit the file and change:
+   - Line 2: REM comment
+   - Line 3: REM comment
+   - Line 7: echo message
+   - Line 8: .env file name
+   - Line 17: .env file name
+   - Line 20: echo message
+4. Save the file
+5. Create corresponding .env.[name] file
+6. Run the bat file
+
+================================================================================
+FILES CREATED
+================================================================================
+
+✅ run_NON_EMA_CROSSOVER.bat (existing)
+✅ run_PYRAMID_STRATEGY.bat (NEW)
+✅ BAT_FILES_GUIDE.txt (complete guide)
+✅ QUICK_BAT_REFERENCE.txt (this file)
+
+================================================================================
+STATUS: ✅ READY TO USE
+================================================================================
+
+Both bat files are ready!
+Run them to start your OpenAlgo strategies.
+
+For detailed guide, see: BAT_FILES_GUIDE.txt
+
+================================================================================

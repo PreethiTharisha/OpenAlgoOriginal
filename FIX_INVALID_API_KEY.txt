@@ -1,0 +1,173 @@
+================================================================================
+                    INVALID API KEY - QUICK FIX
+================================================================================
+
+ERROR:
+  HTTP 403: {"message":"Invalid openalgo apikey","status":"error"}
+
+CAUSE:
+  API key in .env is invalid or placeholder
+
+CURRENT KEY IN .env:
+  APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+  ❌ This is a PLACEHOLDER key - NOT VALID for API calls
+
+================================================================================
+                    SOLUTION (5 MINUTES)
+================================================================================
+
+STEP 1: Start OpenAlgo
+  Open: http://127.0.0.1:5000
+  Should show OpenAlgo dashboard
+
+STEP 2: Log In
+  Username: Your broker username
+  Password: Your broker password
+  Click: Login
+
+STEP 3: Go to API Key Page
+  Click: Settings (top-right menu)
+  Click: API Key
+  Or go directly to: http://127.0.0.1:5000/apikey
+
+STEP 4: Copy Your API Key
+  You'll see a 64-character key
+  Example: 0aac0bae37a2458241ff0405084b17c54368ea461b9ea5e65a2a44e2fae9a165
+  Copy the ENTIRE key
+
+STEP 5: Update .env File
+  Open: D:\OpenAlgo\openalgo\.env
+  Find: APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+  Replace with: APP_KEY = 'YOUR_NEW_64_CHAR_KEY'
+  Save the file
+
+STEP 6: Run Your Script
+  python strategies/examples/sandboxtest_fixed.py
+
+DONE! ✅
+
+================================================================================
+                    VERIFICATION
+================================================================================
+
+Check API Key Format:
+  ✅ Exactly 64 characters
+  ✅ Hexadecimal (0-9, a-f)
+  ✅ No spaces or extra characters
+  ✅ No quotes inside (only around it in .env)
+
+Check .env File:
+  grep APP_KEY D:\OpenAlgo\openalgo\.env
+  Should show your new 64-character key
+
+Check OpenAlgo:
+  http://127.0.0.1:5000
+  Should load dashboard
+  Should show broker connected
+
+================================================================================
+                    EXPECTED SUCCESS OUTPUT
+================================================================================
+
+After fixing API key, you should see:
+
+[OK] Client initialized successfully
+[OK] Funds retrieved: {'status': 'success', ...}
+[OK] Quote retrieved - LTP: 980.90
+[OK] BUY order placed successfully!
+[OK] SELL order placed successfully!
+[OK] Order book retrieved - Total orders: 2
+[OK] Sandbox Test Completed
+
+================================================================================
+                    COMMON ISSUES
+================================================================================
+
+ISSUE 1: "Cannot find API Key page"
+  SOLUTION:
+    1. Make sure you're logged in
+    2. Look for Settings menu (top-right)
+    3. Or go to: http://127.0.0.1:5000/apikey
+
+ISSUE 2: "API Key page shows nothing"
+  SOLUTION:
+    1. Log out and log back in
+    2. Refresh the page
+    3. Try incognito/private browser window
+
+ISSUE 3: "Still getting 'Invalid apikey' error"
+  SOLUTION:
+    1. Check you copied ENTIRE 64-character key
+    2. Check no extra spaces in .env
+    3. Regenerate new API key from dashboard
+    4. Verify .env file is saved
+
+ISSUE 4: "OpenAlgo is not running"
+  SOLUTION:
+    1. Start OpenAlgo: python app.py
+    2. Wait for "Running on http://127.0.0.1:5000"
+    3. Then access API key page
+
+================================================================================
+                    SCRIPTS AFFECTED
+================================================================================
+
+All these scripts use APP_KEY from .env:
+
+  ✅ strategies/examples/sandboxtest_fixed.py
+  ✅ strategies/examples/continuous_trading_bot.py
+  ✅ strategies/examples/continuous_trading_bot_nifty.py
+
+Once you update .env, ALL scripts will work!
+
+================================================================================
+                    QUICK CHECKLIST
+================================================================================
+
+  [ ] OpenAlgo is running (http://127.0.0.1:5000 loads)
+  [ ] You're logged in with broker credentials
+  [ ] You can see the API Key page
+  [ ] You copied the 64-character API key
+  [ ] You updated .env file with new key
+  [ ] You saved the .env file
+  [ ] You ran the script
+
+================================================================================
+                    IMPORTANT NOTES
+================================================================================
+
+⚠️  API Key in .env is PLACEHOLDER:
+    APP_KEY = '1971a163ce161565609db8a4adc323afb2a64a757d22c034b74fbf58477513ce'
+    This was auto-generated on first run and is NOT valid
+
+✅  You need to GET FRESH API KEY from OpenAlgo dashboard:
+    1. Log in with broker credentials
+    2. Go to Settings → API Key
+    3. Copy the 64-character key
+    4. Update .env with this key
+
+🔒  Security:
+    - Never commit .env to git
+    - Keep API key confidential
+    - Don't share .env file
+    - Regenerate if compromised
+
+================================================================================
+                    TIME TO FIX
+================================================================================
+
+Total time: ~5 minutes
+
+  1. Start OpenAlgo: 1 minute
+  2. Log in: 1 minute
+  3. Get API key: 1 minute
+  4. Update .env: 1 minute
+  5. Run script: 1 minute
+
+================================================================================
+
+STATUS: ⚠️  API key needs to be updated
+ACTION: Get fresh API key from OpenAlgo dashboard
+NEXT: Update .env file and run script
+
+================================================================================

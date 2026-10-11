@@ -1,0 +1,23 @@
+{
+  "daily_day": "2026-10-05",
+  "daily_trades": 6,
+  "last_exit_direction": "BEARISH",
+  "last_exit_time": "2026-10-05T12:57:25.080817+05:30",
+  "last_exit_reason": "HARD STOP -3.45%",
+  "last_exit_underlying": 22448.6,
+  "reentry_reset_seen": true,
+  "positions": {
+    "NIFTY06OCT2622650PE": {
+      "symbol": "NIFTY06OCT2622650PE",
+      "exchange": "NFO",
+      "option_type": "PE",
+      "quantity": 2405,
+      "entry_price": 206.4,
+      "entry_time": "2026-10-05T13:27:01.887518+05:30",
+      "expiry": "06OCT26",
+      "peak_pnl_percent": 0.7751937984496096,
+      "trailing_floor_percent": -3.0,
+      "opposite_count": 0
+    }
+  }
+}
